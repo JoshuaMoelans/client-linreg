@@ -1,6 +1,32 @@
 <template>
-  <div class="flex justify-center">
-    <LinearRegression></LinearRegression>
+  <div>
+
+    <div class="flex justify-center">
+      <div class="w-2/5">
+        <LinearRegression
+            title-label="Housing"
+            x-scale-label="Price"
+            y-scale-label="Area"
+            x-csv-header="price"
+            y-csv-header="area"
+            dataset="dataset/Housing.csv">
+        </LinearRegression>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="w-2/5">
+        <LinearRegression
+            title-label="Poison"
+            x-scale-label="Weigth"
+            y-scale-label="survival time"
+            x-csv-header="Weight"
+            y-csv-header="Surv_time"
+            dataset="dataset/Poison.csv">
+        </LinearRegression>
+      </div>
+    </div>
+
   </div>
 </template>
 
