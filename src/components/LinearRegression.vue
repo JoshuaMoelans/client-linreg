@@ -35,12 +35,14 @@ import * as d3 from "d3"
 import {Chart, registerables} from "chart.js"
 import {HousingChartConfig} from "@/assets/chart.config.js"
 
+// todo: fix scaling on y-axis; difficult bc drawn LR line is probably used for y-axis too
+
 export default {
   name: "LinearRegression",
   data() {
     return {
-      slopeValue: 0,
-      intersectValue: 0,
+      slopeValue: 10,
+      intersectValue: 10,
       chart: null,
       xMax: 0
     }
@@ -49,6 +51,7 @@ export default {
     loadDatapoints(datapoints) {
       this.chart.data.datasets[0].data = datapoints;
       this.xMax = Math.max(...datapoints.map(o=>o.x));  // get largest x-value of the datapoints
+      this.xMin = Math.min(...datapoints.map(o=>o.x)); // get smallest x-value of the datapoints
       this.chart.update();
     }
   },
@@ -57,13 +60,15 @@ export default {
     const context = document.getElementById("chart");
     this.chart = new Chart(context, HousingChartConfig);
 
-    d3.csv("dataset/Housing.csv", function (data) {
+    // todo: ideally, we won't use csv files -> for now it is okay though
+    // todo: rename price and area to more general terms (x,y)
+    d3.csv("dataset/points.csv", function (data) {
       // return dictionary with:
       //   - keys (x,y): data format of the chart.js scatter-chart
       //   - values (price,area): csv header names
       return {
-        x: data.price,
-        y: data.area
+        x: data.area,
+        y: data.price
       }
     }).then(this.loadDatapoints)
   },
@@ -72,11 +77,11 @@ export default {
     let b = this.intersectValue
 
     // TODO: make these values dependent on the dataset values
-    a /= 10000 // tweak slope slider accuracy
-    b *= 1000 // tweak intersect slider accuracy
+    a *= 300 // tweak slope slider accuracy
+    b *= 5000 // tweak intersect slider accuracy
 
     this.chart.data.datasets[1].data = [
-      {x: 0, y: b},
+      {x: this.xMin, y: a * this.xMin + b},
       {x: this.xMax, y: a * this.xMax + b}
     ]
     this.chart.update();

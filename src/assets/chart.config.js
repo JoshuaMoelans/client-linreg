@@ -18,7 +18,7 @@ export let HousingChartConfig = {
                 display: true,
                 title: {
                     display: true,
-                    text: "price",
+                    text: "area", // todo: more general name/make it changeable per mission in the config
                     color: 'rgb(0,0,0)',
                     font: {
                         size: 15
@@ -29,7 +29,7 @@ export let HousingChartConfig = {
                 display: true,
                 title: {
                     display: true,
-                    text: "area",
+                    text: "price", // todo: more general name/make it changeable per mission in the config
                     color: 'rgb(0,0,0)',
                     font: {
                         size: 15
@@ -43,7 +43,7 @@ export let HousingChartConfig = {
             },
             title: {
                 display: true,
-                text: "housing",
+                text: "housing", // todo: more general name/make it changeable per mission in the config
                 font: {
                     size: 20
                 }
