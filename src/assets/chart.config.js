@@ -3,11 +3,26 @@ export let HousingChartConfig = {
         datasets: [{
             type: "scatter",
             data: null,
-            backgroundColor: 'rgb(61,57,57)'
+            backgroundColor: 'rgb(141,130,130)',
+            order: 2
         }, {
             type: "line",
             data: null,
-            backgroundColor: 'rgb(91,204,204)'
+            borderColor: 'rgb(0,0,0)', // the line color
+            backgroundColor: 'rgb(0,0,0)',  // the dot color
+            order: 1
+        }, {
+            type: "line",
+            data: null,
+            borderColor: 'rgb(0,0,0)', // the line color
+            backgroundColor: 'rgb(0,0,0)',  // the dot color
+            order: 3
+        }, {
+            type: "line",
+            data: null,
+            borderColor: 'rgb(0,0,0)', // the line color
+            backgroundColor: 'rgb(0,0,0)',  // the dot color
+            order: 4
         }],
     },
     options: {
