@@ -1,4 +1,4 @@
-export let HousingChartConfig = {
+export let ChartConfig = {
     data: {
         datasets: [{
             type: "scatter",
@@ -21,7 +21,7 @@ export let HousingChartConfig = {
                 display: true,
                 title: {
                     display: true,
-                    text: "price",
+                    text: null,
                     color: 'rgb(0,0,0)',
                     font: {
                         size: 15
@@ -32,7 +32,7 @@ export let HousingChartConfig = {
                 display: true,
                 title: {
                     display: true,
-                    text: "area",
+                    text: null,
                     color: 'rgb(0,0,0)',
                     font: {
                         size: 15
@@ -46,7 +46,7 @@ export let HousingChartConfig = {
             },
             title: {
                 display: true,
-                text: "housing",
+                text: null,
                 font: {
                     size: 20
                 }

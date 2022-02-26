@@ -1,6 +1,24 @@
 <template>
-  <div class="flex justify-center">
-    <LinearRegression></LinearRegression>
+  <div>
+
+    <div class="flex justify-center">
+      <LinearRegression
+          titleLabel="Housing"
+          xScaleLabel="price"
+          yScaleLabel="area"
+          dataset="dataset/Housing.csv">
+      </LinearRegression>
+    </div>
+
+    <div class="flex justify-center">
+      <LinearRegression
+          titleLabel="Housing"
+          xScaleLabel="price"
+          yScaleLabel="area"
+          dataset="dataset/Housing.csv">
+      </LinearRegression>
+    </div>
+
   </div>
 </template>
 
