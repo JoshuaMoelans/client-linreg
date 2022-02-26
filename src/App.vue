@@ -27,6 +27,19 @@
       </div>
     </div>
 
+    <div class="flex justify-center">
+      <div class="w-2/5">
+        <LinearRegression
+            title-label="Points"
+            x-scale-label="Area"
+            y-scale-label="Price"
+            x-csv-header="area"
+            y-csv-header="price"
+            dataset="dataset/points.csv">
+        </LinearRegression>
+      </div>
+    </div>
+
   </div>
 </template>
 

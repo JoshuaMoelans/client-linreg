@@ -40,8 +40,8 @@ export default {
     return {
       slopeValue: 0,
       intersectValue: 0,
-      minRangeValue: -20,
-      maxRangeValue: 20,
+      minRangeValue: 0,
+      maxRangeValue: 40,
       xMax: 0,
       xMin: 0,
       yMin: 0,
@@ -77,19 +77,24 @@ export default {
     }).then(this.plotDatapoints)
   },
   updated() {
-    let a = this.slopeValue
-    a *= this.slopeMax - this.slopeMin // scale slope up
-    a /= this.maxRangeValue - this.minRangeValue  // scale slope down
-    a *= 1.5 // small tweak
+    // make more slopes selectable by the slope-slider
+    let slopeMaxX = this.slopeMax * (4/3)
+    let slopeMinN = this.slopeMin * (2/3)
 
+    // scale the slope
+    let a = this.slopeValue
+    a *= slopeMaxX - slopeMinN
+    a /= this.maxRangeValue
+    a += slopeMinN
+
+    // scale the intersect
     let b = this.intersectValue
-    b *= this.yMax - this.yMin // scale intersect up
-    b /= this.maxRangeValue - this.minRangeValue  // scale intersect down
-    b *= 1.5 // small tweak
+    b *= this.yMax - this.yMin
+    b /= this.maxRangeValue - this.minRangeValue
 
     // plot the linear regression line
     this.chart.data.datasets[1].data = [
-      {x: this.xMin, y: a * this.xMin + b},
+      {x: this.xMin, y: b},
       {x: this.xMax, y: a * this.xMax + b}
     ]
     this.chart.update();
