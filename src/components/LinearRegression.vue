@@ -52,14 +52,6 @@ export default {
   },
   methods: {
     plotDatapoints(datapoints) {
-      // DEBUG: custom datapoints
-      // datapoints = [
-      //   {x: 1, y: 1},
-      //   {x: 2, y: 2},
-      //   {x: 3, y: 2},
-      //   {x: 2, y: 1},
-      // ]
-
       // 1. calculate datapoint-dependent values that will help plot the linear regression line
 
       // 1.1 get smallest and largest x-value
@@ -73,16 +65,6 @@ export default {
       // 1.3 get smallest and largest slope
       this.slopeMin = Math.min(...datapoints.map(o => (o.y / o.x)))
       this.slopeMax = Math.max(...datapoints.map(o => (o.y / o.x)))
-
-      // DEBUG: lower and upper bound helper lines
-      // this.chart.data.datasets[2].data = [
-      //   {x: 0, y: 0},
-      //   {x: this.xMax, y: this.slopeMin * this.xMax}
-      // ]
-      // this.chart.data.datasets[3].data = [
-      //   {x: 0, y: 0},
-      //   {x: this.xMax, y: this.slopeMax * this.xMax}
-      // ]
 
       // 2. plot the datapoints
       this.chart.data.datasets[0].data = datapoints;
@@ -105,6 +87,7 @@ export default {
     }).then(this.plotDatapoints)
   },
   updated() {
+    // tweak accuracy of sliders
     let a = this.slopeValue * (this.slopeMax - this.slopeMin) / 20
     let b = this.intersectValue * (this.yMax - this.yMin) / 20
 

@@ -11,18 +11,6 @@ export let HousingChartConfig = {
             borderColor: 'rgb(0,0,0)', // the line color
             backgroundColor: 'rgb(0,0,0)',  // the dot color
             order: 1
-        }, {
-            type: "line",
-            data: null,
-            borderColor: 'rgb(0,0,0)', // the line color
-            backgroundColor: 'rgb(0,0,0)',  // the dot color
-            order: 3
-        }, {
-            type: "line",
-            data: null,
-            borderColor: 'rgb(0,0,0)', // the line color
-            backgroundColor: 'rgb(0,0,0)',  // the dot color
-            order: 4
         }],
     },
     options: {
